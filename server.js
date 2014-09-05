@@ -8,7 +8,7 @@ var swig = require('swig');
 var path = require('path');
 var mongodb = require('mongodb');
 
-if (process.env.NODE_ENV == "development") {
+if (process.env.NODE_ENV === "development") {
 	server.listen(8080);
 } else {
 	server.listen(80);
