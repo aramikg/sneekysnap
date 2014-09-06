@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var swig = require('swig');
 var path = require('path');
 var mongodb = require('mongodb');
+var colors = require('colors');
+var multer = require('multer');
 
 if (process.env.NODE_ENV === "development") {
 	server.listen(8080);
@@ -20,14 +22,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser());
 
+app.use(multer({
+  dest: "public/uploads"
+}));
 
 /* ROUTES */
-//var createApp = require('./routes/user-apps');
+var apiRoute = require('./routes/api');
 
-	app.get('/', function (req, res) {
-		res.render('index');
-	});
 
+app.use('/api/v1/',apiRoute);
+app.get('/', function (req, res) {
+	res.render('index');
+});
 
 
 /* SOCKET STUFF */
@@ -49,7 +55,7 @@ io.on('connection', function (socket) {
   socket.on('disconnect',function(data) {
   	console.log(socket.id + ' disconnected!');
   });
-
-
-
 });
+
+console.log("\033[2J\033[0f");
+console.log('[SneekySnap] '.bold.magenta + 'SERVER STARTED'.grey.underline);
