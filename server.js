@@ -9,6 +9,8 @@ var path = require('path');
 var mongodb = require('mongodb');
 var colors = require('colors');
 var multer = require('multer');
+var getRawBody = require('raw-body')
+var typer      = require('media-typer')
 
 if (process.env.NODE_ENV === "development") {
 	server.listen(8080);
