@@ -18,20 +18,6 @@ if (process.env.NODE_ENV === "development") {
 	server.listen(80);
 }
 
-app.use(function (req, res, next) {
-  getRawBody(req, {
-    length: req.headers['content-length'],
-    limit: '5mb',
-    encoding: typer.parse(req.headers['content-type']).parameters.charset
-  }, function (err, string) {
-    if (err)
-      return next(err)
-
-    req.text = string
-    next()
-  })
-});
-
 app.engine('html',swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
@@ -47,7 +33,9 @@ app.use(multer({
 var apiRoute = require('./routes/api');
 
 
-app.use('/api/v1/',apiRoute);
+app.use('/api/v1/',apiRoute,bodyParser({ 
+    limit: 1024 * 1000
+}));
 app.get('/', function (req, res) {
 	res.render('index');
 });
