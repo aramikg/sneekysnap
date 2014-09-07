@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(function (req, res, next) {
   getRawBody(req, {
     length: req.headers['content-length'],
-    limit: '1mb',
+    limit: '5mb',
     encoding: typer.parse(req.headers['content-type']).parameters.charset
   }, function (err, string) {
     if (err)
