@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === "development") {
 app.engine('html',swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
+app.use(express.limit('4mb'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser());
