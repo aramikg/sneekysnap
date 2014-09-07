@@ -15,10 +15,24 @@ if (process.env.NODE_ENV === "development") {
 } else {
 	server.listen(80);
 }
+
+app.use(function (req, res, next) {
+  getRawBody(req, {
+    length: req.headers['content-length'],
+    limit: '1mb',
+    encoding: typer.parse(req.headers['content-type']).parameters.charset
+  }, function (err, string) {
+    if (err)
+      return next(err)
+
+    req.text = string
+    next()
+  })
+});
+
 app.engine('html',swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
-app.use(express.limit('4mb'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser());
