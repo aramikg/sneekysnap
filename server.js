@@ -9,8 +9,7 @@ var path = require('path');
 var mongodb = require('mongodb');
 var colors = require('colors');
 var multer = require('multer');
-var getRawBody = require('raw-body')
-var typer      = require('media-typer')
+
 
 if (process.env.NODE_ENV === "development") {
 	server.listen(8080);
@@ -33,9 +32,7 @@ app.use(multer({
 var apiRoute = require('./routes/api');
 
 
-app.use('/api/v1/',apiRoute,bodyParser({ 
-    limit: 1024 * 1000
-}));
+app.use('/api/v1/',apiRoute);
 app.get('/', function (req, res) {
 	res.render('index');
 });
