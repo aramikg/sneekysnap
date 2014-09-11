@@ -1,11 +1,15 @@
 {% extends 'templates/base.html' %}
 
 {% block content %}
-	<h2>welcome to sneekysnap</h2>
+  <h1 class="logo">sneekysnap</h1>
+
 
 	{% for image in images %}
-	   {% for img in image.post %}
-			<li><img src="{{img.path|replace('public/','','g')}}"</li>
+	  {% for img in image.post %}
+	  	{% if img.path %}
+				<div class="snap"><img src="{{img.path|replace('public/','','g')}}"/></div>
+	  	{% endif %}
 		{% endfor %}
 	{% endfor %}
+
 {% endblock %}
