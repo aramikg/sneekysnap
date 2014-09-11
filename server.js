@@ -44,7 +44,7 @@ app.get('/', function (req, res) {
 			                      console.log('feed api connection error'.error);
 			                    } else {
 				                    console.log('** feed request'.warn);
-				                    res.render(index,{images:result});  
+				                    res.render('index',{images:result});  
 				                    db.close();
 			                  	}
 			                });
