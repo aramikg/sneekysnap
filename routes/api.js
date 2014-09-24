@@ -59,7 +59,8 @@ router.post('/new',function(req, res, next) {
  
 console.log(req);
 
-
+  var lat = req.lat;
+  var long = req.long;
 
   if ('files' in req.files) { 
 		if (req.files.files.size === 0) {
@@ -71,7 +72,9 @@ console.log(req);
 			    if (!err) {
 			        db.collection("feed",function(err,collection) {
 			            if (upload != "" || upload != null) {
-			                collection.save({"post": upload},function(err,result) {
+
+			                collection.save({"post": {"user":"id","coor": {"lat":32,"long":323},"expires":"date","data":upload}},function(err,result) {
+			                
 			                    if (err) {
 			                    	console.log('error while saving photo to db ->'.error + err);
 			                      res.send({error: {message:"error ->" + err}})
