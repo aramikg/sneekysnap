@@ -57,7 +57,7 @@ router.post('/new',function(req, res, next) {
 	console.log('[POST]'.red.bold + ' SneekySnap API v1.0 ----'.warn + ' /new'.green);
 	var upload = [];
  
-console.log(req);
+console.log("test ->>>>" + req.test);
 
   var lat = req.lat;
   var long = req.long;
