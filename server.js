@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
 			                    } else {
 				                    console.log('** feed request'.warn);
 				                    console.log(result);
-				                    res.render('index',{images:result});  
+				                    res.render('index',{posts:result});  
 				                    db.close();
 			                  	}
 			                });

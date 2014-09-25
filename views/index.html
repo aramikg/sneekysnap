@@ -4,6 +4,12 @@
   <h1 class="logo">sneekysnap</h1>
 
 
+  {% for post in posts %}
+  	{% for image in post %}
+  		{{ image }}
+  	{% endfor %}
+  {% endfor %}
+
 	{% for image in images %}
 	{{ image }}
 	  {% for img in image.data %}
