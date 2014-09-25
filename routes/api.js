@@ -74,7 +74,7 @@ console.log("test ->>>>" + req.body.uuid);
 			        db.collection("feed",function(err,collection) {
 			            if (upload != "" || upload != null) {
 
-			                collection.save({"post": {"user":"id","coor": {"lat":32,"long":323},"expires":"date","data":upload}},function(err,result) {
+			                collection.save({"post": {"user":uuid,"coor": {"lat":32,"long":323},"expires":"date","data":upload}},function(err,result) {
 			                
 			                    if (err) {
 			                    	console.log('error while saving photo to db ->'.error + err);
