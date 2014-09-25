@@ -5,8 +5,8 @@
 
 
   {% for post in posts %}
-  	{% for data in post %}
-  		{{ data.path }}
+  	{% for data in post.data %}
+  		{{ data }}
   	{% endfor %}
   {% endfor %}
 
