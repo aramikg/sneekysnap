@@ -4,21 +4,8 @@
   <h1 class="logo">sneekysnap</h1>
 
 
-  {% for post in posts %}
-  	{% for data in post %}
-  		{% for image in data %}
-  			{{ image.data }}
-  		{% endfor %}
-  	{% endfor %}
-  {% endfor %}
+  
+	<!-- <div class="snap"><img src="{{img.path|replace('public/','','g')}}"/></div> -->
 
-	{% for image in images %}
-	{{ image }}
-	  {% for img in image.data %}
-	  	{% if img.path %}
-				<div class="snap"><img src="{{img.path|replace('public/','','g')}}"/></div>
-	  	{% endif %}
-		{% endfor %}
-	{% endfor %}
 
 {% endblock %}
