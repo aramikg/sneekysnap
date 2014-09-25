@@ -9,6 +9,7 @@ var path = require('path');
 var mongodb = require('mongodb');
 var colors = require('colors');
 var multer = require('multer');
+var util = require("util"); 
 
 
 if (process.env.NODE_ENV === "development") {
@@ -44,7 +45,7 @@ app.get('/', function (req, res) {
 			                      console.log('feed api connection error'.error);
 			                    } else {
 				                    console.log('** feed request'.warn);
-				                    console.log(result);
+				                    console.log(util.inspect(result, false, null));
 				                    res.render('index',{posts:result});  
 				                    db.close();
 			                  	}
