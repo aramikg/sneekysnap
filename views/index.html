@@ -5,7 +5,8 @@
 
 
 	{% for image in images %}
-	  {% for img in image.post %}
+	{{ image }}
+	  {% for img in image.data %}
 	  	{% if img.path %}
 				<div class="snap"><img src="{{img.path|replace('public/','','g')}}"/></div>
 	  	{% endif %}
