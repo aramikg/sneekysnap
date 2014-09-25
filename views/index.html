@@ -5,8 +5,10 @@
 
 
   {% for post in posts %}
-  	{% for data in post.data %}
-  		{{ data }}
+  	{% for data in post %}
+  		{% for image in data %}
+  			{{ image }}
+  		{% endfor %}
   	{% endfor %}
   {% endfor %}
 
