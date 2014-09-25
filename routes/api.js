@@ -59,6 +59,7 @@ router.post('/new',function(req, res, next) {
  
 console.log("test ->>>>" + req.body.test);
 
+	var uuid = req.body.uuid;
   var lat = req.lat;
   var long = req.long;
 
