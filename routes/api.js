@@ -62,6 +62,7 @@ console.log("test ->>>>" + req.body.uuid);
 	var uuid = req.body.uuid;
   var coorLat = req.body.lat;
   var coorLong = req.body.long;
+  var expirationDate = req.body.expires;
 
   if ('files' in req.files) { 
 		if (req.files.files.size === 0) {
@@ -74,7 +75,7 @@ console.log("test ->>>>" + req.body.uuid);
 			        db.collection("feed",function(err,collection) {
 			            if (upload != "" || upload != null) {
 
-			                collection.save({"post": {"user":uuid,"coor": {"lat":coorLat,"long":coorLong},"expires":"date","data":upload}},function(err,result) {
+			                collection.save({"post": {"user":uuid,"coor": {"lat":coorLat,"long":coorLong},"expires":expirationDate,"data":upload}},function(err,result) {
 			                
 			                    if (err) {
 			                    	console.log('error while saving photo to db ->'.error + err);
