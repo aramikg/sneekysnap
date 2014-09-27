@@ -22,8 +22,62 @@ colors.setTheme({
 });
 
 
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+
+
 //prep db
 var db = new mongodb.Db('sneekysnap', new mongodb.Server('127.0.0.1', 27017), {safe:true});
+
+router.get('/feed/local', function(req,res,next){
+	console.log(req.query.lat);
+	var lat = parseFloat(req.query.lat);
+	var long = parseFloat(req.query.long);
+
+	var minLat = lat - 0.01;
+	var maxLat = lat + 0.01;
+	var minLong = long - 0.01;
+	var maxLong = long + 0.01;
+
+
+	db.open(function(err) { //save to db
+	    if (!err) {
+	        db.collection("feed",function(err,collection) {
+	                collection.find({post: {coor: {lat: {$gt: minLat , $lt: maxLat} } } }).toArray(function(err, result) {
+	                    if (err) {
+	                      res.send(err)
+	                      console.log('feed api connection error'.error);
+	                    } else {
+		                    console.log('** feed request'.warn);
+		                    res.send(result);  
+		                    db.close();
+	                  	}
+	                });
+	        });
+	    } else {
+	    	console.log('       ERROR: database error -> '.error.bold + err);
+	      res.send({error: {message:"error ->" + err}})
+	    }
+	}); //end db
+
+});
+
 
 router.get('/feed', function(req, res, next) {
 	console.log('[GET]'.debug.bold + ' SneekySnap API v1.0 ----'.warn + ' /feed'.green);
