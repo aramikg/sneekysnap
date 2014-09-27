@@ -47,13 +47,13 @@ var db = new mongodb.Db('sneekysnap', new mongodb.Server('127.0.0.1', 27017), {s
 
 router.get('/feed/local', function(req,res,next){
 	console.log(req.query.lat);
-	var lat = parseFloat(req.query.lat);
-	var long = parseFloat(req.query.long);
+	var latitude = parseFloat(req.query.lat);
+	var longitude = parseFloat(req.query.long);
 
-	var minLat = lat - 0.01;
-	var maxLat = lat + 0.01;
-	var minLong = long - 0.01;
-	var maxLong = long + 0.01;
+	var minLat = latitude - 0.01;
+	var maxLat = latitude + 0.01;
+	var minLong = longitude - 0.01;
+	var maxLong = longitude + 0.01;
 
   console.log("min: " + minLat + "," + minLong);
   console.log("max: " + maxLat + "," + maxLong);
