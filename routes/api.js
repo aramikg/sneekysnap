@@ -55,6 +55,8 @@ router.get('/feed/local', function(req,res,next){
 	var minLong = long - 0.01;
 	var maxLong = long + 0.01;
 
+  console.log("min: " + minLat + "," + minLong);
+  console.log("max: " + maxLat + "," maxLong);
 
 	db.open(function(err) { //save to db
 	    if (!err) {
