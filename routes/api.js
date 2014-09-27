@@ -50,27 +50,17 @@ router.get('/feed/local', function(req,res,next){
 	var latitude = parseFloat(req.query.lat);
 	var longitude = parseFloat(req.query.long);
 
-	if (latitude > 0) {
-		var minLat = latitude - 0.01;
-		var maxLat = latitude + 0.01;
-	} else {
-		//lat is neg number
-		var minLat = latitude + 0.01;
-		var maxLat = latitude - 0.01;
-	}
-
-	if (longitude > 0) {
-			var minLong = longitude - 0.01;
-			var maxLong = longitude + 0.01;
-	} else {
-		//long is neg number
-			var minLong = longitude + 0.01;
-			var maxLong = longitude - 0.01;
-	}
+	var minLat = latitude - 0.01;
+	var maxLat = latitude + 0.01;
+	var minLong = longitude - 0.01;
+	var maxLong = longitude + 0.01;
 
 
-  console.log("min: " + minLat + "," + minLong);
-  console.log("max: " + maxLat + "," + maxLong);
+  console.log("minLat: " + minLat);
+  console.log("maxLat: " + maxLat);
+  console.log("minLong: " + minLong);
+  console.log("maxLong: " + maxLong);
+
 
 	db.open(function(err) { //save to db
 	    if (!err) {
