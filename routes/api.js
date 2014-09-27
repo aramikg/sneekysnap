@@ -59,7 +59,7 @@ router.get('/feed/local', function(req,res,next){
 	db.open(function(err) { //save to db
 	    if (!err) {
 	        db.collection("feed",function(err,collection) {
-	                collection.find({post: {coor: {lat: {$gt: minLat , $lt: maxLat} } } }).toArray(function(err, result) {
+	                collection.find({"post.coor.lat": {$gte: minLat, $lte: maxLat}}).toArray(function(err, result) {
 	                    if (err) {
 	                      res.send(err)
 	                      console.log('feed api connection error'.error);
