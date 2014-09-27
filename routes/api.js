@@ -114,8 +114,8 @@ router.post('/new',function(req, res, next) {
 console.log("test ->>>>" + req.body.uuid);
 
 	var uuid = req.body.uuid;
-  var coorLat = req.body.lat;
-  var coorLong = req.body.long;
+  var coorLat = parseFloat(req.body.lat);
+  var coorLong = parseFloat(req.body.long);
   var expirationDate = req.body.expires;
 
   if ('files' in req.files) { 
