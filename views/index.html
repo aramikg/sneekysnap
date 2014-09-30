@@ -3,7 +3,12 @@
 {% block content %}
   <h1 class="logo">sneekysnap</h1>
 
-
+  <section class="beta-signup">
+	  <form action="/beta" method="post">
+	  	<input type="text" name="email" class="js-beta-email" placeholder="enter your email for early access, beta invite" />
+	  	<input type="submit" value=">" class="js-beta-signup" />
+	  </form>
+  </section>
   
 	<!-- <div class="snap"><img src="{{img.path|replace('public/','','g')}}"/></div> -->
 

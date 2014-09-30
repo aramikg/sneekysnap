@@ -1,13 +1,16 @@
 html, body {
   width: 100%;
   height: 100%;
-  background-color: #222325; }
+  background-color: #222325;
+  position: relative; }
 
 * {
   margin: 0;
   padding: 0;
   outline: none;
-  border: 0; }
+  border: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100; }
 
 h1 {
   display: block;
@@ -17,6 +20,52 @@ h1 {
   height: 100%;
   background: url(../images/logo.png) no-repeat center center;
   background-size: 472px 185px; }
+
+.beta-signup {
+  position: fixed;
+  width: 100%;
+  bottom: 0px; }
+  .beta-signup h2 {
+    font-size: 15px;
+    color: yellow;
+    text-align: center;
+    width: 50%; }
+  .beta-signup form {
+    position: relative;
+    width: 60%;
+    display: block;
+    margin: 20px auto;
+    text-align: center; }
+    .beta-signup form input[type="text"] {
+      width: 60%;
+      display: inline-block;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: transparent;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 100;
+      text-align: center;
+      color: white;
+      border-left: 1px solid #d2d2d2;
+      border-top: 1px solid #d2d2d2;
+      border-bottom: 1px solid #d2d2d2; }
+    .beta-signup form input[type="submit"] {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: 100;
+      width: 60px;
+      height: 60px;
+      color: white;
+      margin: 0 auto;
+      border: 1px solid #d2d2d2;
+      background-color: #222325;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      margin-left: -20px;
+      cursor: pointer; }
 
 .snap {
   display: inline-block;
