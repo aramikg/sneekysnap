@@ -76,13 +76,9 @@ router.get('/feed/local', function(req,res,next){
 		                    var filteredResults = [];
 		                    for (var i = 0; i < result.length; i++) {
 		                    	 var now = Date.now();
-		                    	 var expires = new Date(Date.parse(result[i].post.expires));
-		                    	 console.log(result[i].post.expires);
-		                    	 console.log('expires: ' + expires);
-		                    	 console.log('expires time: ' + expires.getTime());
-		                    	 console.log("now: " + now);
-		                    	 console.log("date: " + expires);
-		                    	 if (expires.getTime() > now) {
+		                    	 var expires = parseFloat(result[i].post.expires);
+		                    	
+		                    	 if (expires > now) {
 		                    	 	 filteredResults.push(result[i]);
 		                    	 }
 		                    };
