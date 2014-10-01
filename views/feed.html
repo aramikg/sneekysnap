@@ -1,0 +1,14 @@
+{% extends 'templates/base.html' %}
+
+{% block content %}
+ {% for post in result %}
+  {% for data in post %}
+  	{% for path in data %}
+  		<img src="{{ path.path|replace('public','','g') }}" style="display:inline-block; margin:3px; width: 150px; height:auto;" />
+  	{% endfor %}
+  {% endfor %}
+ {% endfor %}
+	<!-- <div class="snap"><img src="{{img.path|replace('public','','g')}}"/></div> -->
+
+
+{% endblock %}
