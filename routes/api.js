@@ -110,7 +110,8 @@ router.get('/feed', function(req, res, next) {
 			                      console.log('feed api connection error'.error);
 			                    } else {
 				                    console.log('** feed request'.warn);
-				                    res.send(result);  
+				                    res.render('feed.html',{result:result});
+				                    //res.send(result);  
 				                    db.close();
 			                  	}
 			                });
