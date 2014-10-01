@@ -128,6 +128,33 @@ router.get('/upload', function(req, res, next) {
 	res.render('_upload');
 });
 
+router.post('/beta',function(req, res, next) {
+	var email = req.body.email;
+				db.open(function(err) { //save to db
+			    if (!err) {
+			        db.collection("beta",function(err,collection) {
+			           
+
+			                collection.save({"email":email},function(err,result) {
+			                
+			                    if (err) {
+			                    	console.log('error while saving photo to db ->'.error + err);
+			                      res.send({error: {message:"error ->" + err}})
+			                    } else {
+				                    console.log('       id:'.green + result._id.toString().prompt.bold.italic);
+				                    res.render("index",{beta:1}); 
+				                    db.close();
+			                  	}
+			                });
+			          
+			        });
+			    } else {
+			    	console.log('       ERROR: database error -> '.error.bold + err);
+			      res.send({error: {message:"error ->" + err}})
+			    }
+			}); //end db
+});
+
 router.post('/new',function(req, res, next) {
 	console.log('[POST]'.red.bold + ' SneekySnap API v1.0 ----'.warn + ' /new'.green);
 	var upload = [];

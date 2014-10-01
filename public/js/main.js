@@ -4,14 +4,16 @@ var SNEEKYSNAP = function() {
 	this.init = function() {
 		var signupButton = document.querySelector('.js-beta-signup');
 		var signupEmail = document.querySelector('.js-beta-email');
-		signupButton.onclick = function(e) {
-			e.preventDefault();
-			if (scope.validateEmail(signupEmail.value)) {
-				alert('thanks')
-			} else {
-				alert('please enter a correct email address')
+		if (signupButton) {
+			signupButton.onclick = function(e) {
+				e.preventDefault();
+				if (scope.validateEmail(signupEmail.value)) {
+					$('#beta-signup').submit();
+				} else {
+					alert('please enter a correct email address')
+				}
+				
 			}
-			
 		}
 	},
 	this.validateEmail = function(email) { 
