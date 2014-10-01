@@ -77,10 +77,11 @@ router.get('/feed/local', function(req,res,next){
 		                    for (var i = 0; i < result.length; i++) {
 		                    	 var now = Date.now();
 		                    	 var expires = new Date(Date.parse(result[i].post.expires));
-		                    	 expires = expires.getTime();
+		                    	 console.log('expires: ' + expires);
+		                    	 console.log('expires time: ' + expires.getTime());
 		                    	 console.log("now: " + now);
 		                    	 console.log("date: " + expires);
-		                    	 if (expires > now) {
+		                    	 if (expires.gettime() > now) {
 		                    	 	 filteredResults.push(result[i]);
 		                    	 }
 		                    };
