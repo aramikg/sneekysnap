@@ -61,6 +61,8 @@ router.get('/feed/local', function(req,res,next){
   console.log("minLong: " + minLong);
   console.log("maxLong: " + maxLong);
 
+  var now = new Date(Date.parse("9/30/14, 12:57 AM"));
+ 
 
 	db.open(function(err) { //save to db
 	    if (!err) {
@@ -71,7 +73,19 @@ router.get('/feed/local', function(req,res,next){
 	                      console.log('feed api connection error'.error);
 	                    } else {
 		                    console.log('** feed request'.warn);
-		                    res.send(result);  
+		                    var filteredResults = [];
+		                    for (var i = 0; i < result.length; i++) {
+		                    	 var now = Date.now();
+		                    	 var expires = new Date(Date.parse(result[i].post.expires));
+		                    	 expires = expires.getTime();
+		                    	 if (expires < now) {
+		                    	 	 filteredResults.push(result[i]);
+		                    	 }
+		                    };
+		                    console.log(result.length);
+		                    console.log(result[0].post.expires);
+		                    res.send(filteredResults);
+
 		                    db.close();
 	                  	}
 	                });
