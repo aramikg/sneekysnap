@@ -77,6 +77,7 @@ router.get('/feed/local', function(req,res,next){
 		                    for (var i = 0; i < result.length; i++) {
 		                    	 var now = Date.now();
 		                    	 var expires = new Date(Date.parse(result[i].post.expires));
+		                    	 console.log(result[i].post.expires);
 		                    	 console.log('expires: ' + expires);
 		                    	 console.log('expires time: ' + expires.getTime());
 		                    	 console.log("now: " + now);
