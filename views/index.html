@@ -1,5 +1,15 @@
 {% extends 'templates/base.html' %}
 
+{% block meta %}
+  <meta property="og:title" content="sneekysnap">
+  <meta property="og:description" content="With Sneekysnap you can anonymously share images that will disappear on the expiration date of your choice. Post your location-based photos without a trace. No signups. No usernames. No regrets.">
+  <meta property="og:type" content="website">
+  
+  <meta property="og:image" content="http://sneekysnap.com/images/logo.png">
+  <meta property="og:url" content="http://sneekysnap.com">
+  <meta property="og:site_name" content="sneekysnap">
+{% endblock %}
+
 {% block content %}
   <h1 class="logo">sneekysnap</h1>
 
