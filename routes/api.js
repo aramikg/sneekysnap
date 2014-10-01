@@ -81,7 +81,7 @@ router.get('/feed/local', function(req,res,next){
 		                    	 console.log('expires time: ' + expires.getTime());
 		                    	 console.log("now: " + now);
 		                    	 console.log("date: " + expires);
-		                    	 if (expires.gettime() > now) {
+		                    	 if (expires.getTime() > now) {
 		                    	 	 filteredResults.push(result[i]);
 		                    	 }
 		                    };
