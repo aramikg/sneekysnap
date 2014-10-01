@@ -4,8 +4,12 @@
  {% for post in result %}
   {% for data in post %}
   	{% for path in data %}
-  	   {{ path }}
-  	   {{ path.path }}
+  	   <p>{{ path }}</p>
+  	   <p>{{ path.path }}</p>
+  	   <p>{{ path.path.path }}</p>
+  	   {% for image in path.path %}
+  	   	 image: {{ image }}
+  	   {% endfor %}
   		<img src="{{ path.path|replace('public','','g') }}" style="display:inline-block; margin:3px; width: 150px; height:auto;" />
   	{% endfor %}
   {% endfor %}
