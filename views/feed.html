@@ -4,6 +4,8 @@
  {% for post in result %}
   {% for data in post %}
   	{% for path in data %}
+  	   {{ path }}
+  	   {{ path.path }}
   		<img src="{{ path.path|replace('public','','g') }}" style="display:inline-block; margin:3px; width: 150px; height:auto;" />
   	{% endfor %}
   {% endfor %}
