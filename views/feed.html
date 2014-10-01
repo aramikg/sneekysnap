@@ -5,12 +5,12 @@
   {% for data in post %}
   	{% for path in data %}
   	   {% for image in path %}
+  	      {% if image.path %}
   				<img src="{{ image.path|replace('public','','g') }}" style="display:inline-block; margin:3px; width: 150px; height:auto;" />
+  	      {% endif %}
   	   {% endfor %}
   	{% endfor %}
   {% endfor %}
  {% endfor %}
 	<!-- <div class="snap"><img src="{{img.path|replace('public','','g')}}"/></div> -->
-
-{{ result }}
 {% endblock %}
