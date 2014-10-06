@@ -86,7 +86,7 @@ router.get('/feed/local', function(req,res,next){
 		                    if (filteredResults.length > 0) {
 		                    	res.send(filteredResults);
 		                    } else {
-		                    	res.send("{\"error\":\"no local results\"");
+		                    	res.send("{\"error\":\"no local results\"}");
 		                    }
 
 		                    db.close();
