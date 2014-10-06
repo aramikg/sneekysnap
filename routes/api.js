@@ -84,7 +84,11 @@ router.get('/feed/local', function(req,res,next){
 		                    };
 		                    console.log(result.length);
 		                    console.log(result[0].post.expires);
-		                    res.send(filteredResults);
+		                    if (filteredResults.length > 0) {
+		                    	res.send(filteredResults);
+		                    } else {
+		                    	res.send("{message:\"no local results\"");
+		                    }
 
 		                    db.close();
 	                  	}
