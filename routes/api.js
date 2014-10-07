@@ -61,8 +61,7 @@ router.get('/feed/local', function(req,res,next){
   console.log("minLong: " + minLong);
   console.log("maxLong: " + maxLong);
 
-  var now = new Date(Date.parse("9/30/14, 12:57 AM"));
- 
+  
 
 	db.open(function(err) { //save to db
 	    if (!err) {
@@ -142,6 +141,7 @@ console.log("test ->>>>" + req.body.uuid);
   var coorLat = parseFloat(req.body.lat);
   var coorLong = parseFloat(req.body.long);
   var expirationDate = req.body.expires;
+  var isSneekyMode = req.body.sneekymode;
 
   if ('files' in req.files) { 
 		if (req.files.files.size === 0) {
@@ -154,7 +154,7 @@ console.log("test ->>>>" + req.body.uuid);
 			        db.collection("feed",function(err,collection) {
 			            if (upload != "" || upload != null) {
 
-			                collection.save({"post": {"user":uuid,"coor": {"lat":coorLat,"long":coorLong},"expires":expirationDate,"data":upload}},function(err,result) {
+			                collection.save({"post": {"user":uuid,"coor": {"lat":coorLat,"long":coorLong},"expires":expirationDate, "sneeky":isSneekyMode,"data":upload}},function(err,result) {
 			                
 			                    if (err) {
 			                    	console.log('error while saving photo to db ->'.error + err);
