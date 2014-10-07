@@ -143,6 +143,8 @@ console.log("test ->>>>" + req.body.uuid);
   var expirationDate = req.body.expires;
   var isSneekyMode = req.body.sneekymode;
 
+  console.log(isSneekyMode);
+
   if ('files' in req.files) { 
 		if (req.files.files.size === 0) {
 		  res.send({error: {message:"0"}})
